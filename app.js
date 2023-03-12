@@ -6,9 +6,12 @@ var mongoose = require('mongoose');
 
 /// [variables]
 var app = express();
-const port = 3000;
+const port = process.env.PORT || 5000;
 
 dotenv.config();
+app.get("/",(req,res)=>{
+    res.send('Hi, I am live !');
+});
 app.use(express.json());
 app.use(express.urlencoded({ extended : false }));
 app.use(usersRouter);
