@@ -15,8 +15,11 @@ app.get("/",(req,res)=>{
 });
 app.use(express.json());
 app.use(express.urlencoded({ extended : false }));
+// app.use(cors({
+//     origin: 'http://localhost:3000',
+// }));
 app.use(cors({
-    origin: 'http://localhost:3000',
+    origin: '*',
 }));
 app.use(usersRouter);
 
