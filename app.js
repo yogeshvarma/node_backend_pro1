@@ -4,7 +4,6 @@ var usersRouter = require('./routes/user_router');
 const dotenv = require('dotenv');
 var mongoose = require('mongoose');
 var cors = require('cors');
-var proxyRouter = require('./routes/cors_proxy');
 
 /// [variables]
 var app = express();
@@ -16,14 +15,10 @@ app.get("/",(req,res)=>{
 });
 app.use(express.json());
 app.use(express.urlencoded({ extended : false }));
-// app.use(cors({
-//     origin: 'http://127.0.0.1:3000',
-// }));
 app.use(cors({
     origin: 'http://localhost:3000',
 }));
 app.use(usersRouter);
-app.use(proxyRouter);
 
 mongoose.connect(process.env.DB_CONNECT,{
     useNewUrlParser: true,
